@@ -1,8 +1,8 @@
 function setup() {
-    canvas = createCanvas(250, 250);
+    canvas = createCanvas(450, 450);
     canvas.center();
     canvas.mouseReleased(classifyCanvas);
-    synth = window.speachSynthesis;
+    synth = window.speechSynthesis;
 }
 
 function preload() {
@@ -33,7 +33,7 @@ function gotResults(error, results) {
     {
         console.log(results);
         document.getElementById("lable").innerHTML = "I guess " + results[0].label;
-        document.getElementById("confidence").innerHTML = "I am " + results[0].confidence + Math.round(results[0].confidence * 100) + "% confident";
+        document.getElementById("confidence").innerHTML = "I am " + Math.round(results[0].confidence * 100) + "% confident";
 
         utterThis = new SpeechSynthesisUtterance(results[0].label);
         synth.speak(utterThis);
